@@ -1,0 +1,47 @@
+DELIMITER |
+CREATE PROCEDURE Ajout_Vente
+  @Quantite
+  @Date
+  @ID_TypeEquipement
+  @ID_Divinite
+  @ID_Pouvoir
+  @ID_Lieu
+  @ID_DemiDieu
+
+BEGIN
+  INSERT INT vente(Quantite,Date,ID_TypeEquipement,ID_Divinite,ID_Pouvoir,ID_Lieu,ID_DemiDieu)
+  VALUES(@Quantite,@Date,@ID_TypeEquipement,@ID_Divinite,@ID_Pouvoir,@ID_Lieu,@ID_DemiDieu)
+END
+|
+
+
+
+INSERT INTO vente(`Date`, Quantite,ID_TypeEquipement,ID_Divinite,ID_Pouvoir,ID_Lieu,ID_DemiDieu)
+VALUES (Date,Quantite,ID_TypeEquipement,ID_Divinite,ID_Pouvoir,ID_Lieu,ID_DemiDieu)
+
+
+
+
+SELECT INSTR(`Date`,"Scirophorion"),SUM(`Quantite`) FROM `vente` WHERE `ID_Divinite`= 6 
+SELECT INSTR(`Date`,mois.ID = 12),INSTR(`Date`,mois.ID <> 12), SUM(`Quantite`)
+ FROM vente,mois
+ WHERE vente.`ID_Divinite` = 6
+
+SELECT SUM(`Quantite`)
+ FROM vente,mois
+ WHERE vente.`ID_Divinite` = 6 AND INSTR(`Date`,mois.ID = 12)
+
+
+
+SELECT COUNT(LEFT(`Date`(INSTR(`Date`,'"0"'))) 
+FROM `vente` 
+WHERE `ID_Lieu` = 4
+
+
+ALTER TABLE vente
+DROP FOREIGN KEY Vente_DemiDieu4_FK; 
+Vente_Lieu3_FK
+Vente_Pouvoir2_FK
+Vente_Divinite1_FK
+Vente_TypeEquipement0_FK
+
